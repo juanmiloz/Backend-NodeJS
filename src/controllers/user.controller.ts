@@ -93,7 +93,7 @@ class UserController {
             return res.status(200).send({email:user.email, token})
 
         } catch (error) {
-            res.status(500).json(error);            
+            res.status(500).json(error);
         }
     }
 

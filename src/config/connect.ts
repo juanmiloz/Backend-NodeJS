@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 dotenv.config();
 
-const connectionString  = process.env.MONGO_URI || "mongodb+srv://juanmiloz:Password@tallerbackweb.gzwu5re.mongodb.net/web";
+const connectionString  = process.env.MONGO_URI || "mongodb+srv://juanmiloz:Password@tallerwebback.lgxfiwi.mongodb.net/"
                           
 
 export const  db = mongoose.connect(connectionString)

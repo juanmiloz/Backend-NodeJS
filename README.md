@@ -342,3 +342,83 @@ This API serves as a platform for managing users, groups, and associations betwe
       "message": "The user is not in the group"
     }
     ```
+
+
+
+# Project Execution Guide
+
+This guide provides step-by-step instructions on how to set up and run the project. The project is built with Yarn and TypeScript, using technologies such as Express, MongoDB with Mongoose, JWT for authentication, and Zod for schema validation.
+
+## Prerequisites
+
+Make sure you have the following installed on your machine:
+
+- [Node.js](https://nodejs.org/) (version 14 or later)
+- [Yarn](https://yarnpkg.com/)
+- [MongoDB](https://www.mongodb.com/try/download/community) (running locally or accessible)
+
+## Installation
+
+1. Clone the project repository to your local machine:
+
+    ```bash
+    https://github.com/juanmiloz/Backend-NodeJS.git
+    ```
+
+2. Navigate to the project directory:
+
+    ```bash
+    cd Backend-NodeJS
+    ```
+
+3. Install dependencies using Yarn:
+
+    ```bash
+    yarn install
+    ```
+
+## Configuration
+
+1. Create a `.env` file in the project root and configure the following environment variables:
+
+    ```env
+    PORT=3000
+    MONGO_URI=your-mongodb-connection-string
+    JWT_SECRET=your-secret-key
+    ```
+
+    Replace `your-mongodb-connection-string` with the connection string for your MongoDB instance and `your-secret-key` with a secret key for JWT token generation.
+
+## Build
+
+Compile TypeScript files to JavaScript:
+
+```bash
+yarn build
+```
+
+## Run the Application
+
+Start the server:
+
+```bash
+yarn start
+```
+
+The server will be running at `http://localhost:3000` (or the port specified in your `.env` file).
+
+## Development Mode
+
+If you want to run the application in development mode with automatic restarts on file changes, use:
+
+```bash
+yarn dev
+```
+
+This uses `nodemon` and `ts-node` to watch for changes in the `src` directory.
+
+## Testing Endpoints
+
+You can use a tool like [Postman](https://www.postman.com/) or [curl](https://curl.se/) to test the provided endpoints documented in the [API Endpoints README](#api-endpoints-readme).
+
+Make sure to include the necessary headers and request payloads according to the endpoint requirements.

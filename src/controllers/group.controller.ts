@@ -4,7 +4,14 @@ import groupService from "../services/group.service";
 import {UserDocument} from "../models/user.model";
 
 class GroupController {
-    
+
+
+    /**
+     * Creates a new group.
+     * @param req - Express request object.
+     * @param res - Express response object.
+     * @returns Promise<Response>
+     */
     public async create(req: Request, res: Response): Promise<Response> {
         try {
             const groupExist: GroupDocument | null = await groupService.findByName(req.body.name);
@@ -20,6 +27,13 @@ class GroupController {
         }
     }
 
+
+    /**
+     * Retrieves all groups.
+     * @param req - Express request object.
+     * @param res - Express response object.
+     * @returns Promise<Response>
+     */
     public  async  findAll(req: Request, res: Response): Promise<Response> {
         try {
             const groups: GroupDocument[] = await groupService.findAll();
@@ -29,6 +43,13 @@ class GroupController {
         }
     }
 
+
+    /**
+     * Updates an existing group.
+     * @param req - Express request object.
+     * @param res - Express response object.
+     * @returns Promise<void>
+     */
     public async update(req: Request, res: Response) {
         try {
             const group: GroupDocument | null = await  groupService.findById(req.params.id);
@@ -44,6 +65,13 @@ class GroupController {
         }
     }
 
+
+    /**
+     * Deletes an existing group.
+     * @param req - Express request object.
+     * @param res - Express response object.
+     * @returns Promise<void>
+     */
     public async delete(req: Request, res: Response) {
         try {
             const group: GroupDocument | null = await  groupService.findById(req.params.id);
@@ -60,6 +88,12 @@ class GroupController {
         }
     }
 
+    /**
+     * Retrieves information about users belonging to a group.
+     * @param req - Express request object.
+     * @param res - Express response object.
+     * @returns Promise<>
+     */
     public async getUsersInfo(req:Request, res:Response) {
         try{
             const group: GroupDocument | null = await  groupService.findById(req.params.id);

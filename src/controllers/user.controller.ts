@@ -5,6 +5,13 @@ import bcrypt from 'bcrypt';
 import {GroupDocument} from "../models/group.model";
 
 class UserController {
+
+    /**
+     * Creates a new user.
+     * @param req - Express request object.
+     * @param res - Express response object.
+     * @returns Promise<Response>
+     */
     public async create(req: Request, res: Response): Promise<Response> {
         try {
             const userExists: UserDocument | null = await userService.findByEmail(req.body.email);
@@ -21,6 +28,12 @@ class UserController {
         }
     }
 
+    /**
+     * Retrieves all users.
+     * @param req - Express request object.
+     * @param res - Express response object.
+     * @returns Promise<Response>
+     */
     public  async  findAll(req: Request, res: Response): Promise<Response> {
         try {
             const users: UserDocument[] = await userService.findAll();
@@ -30,6 +43,12 @@ class UserController {
         }
     }
 
+    /**
+     * Retrieves a user by ID.
+     * @param req - Express request object.
+     * @param res - Express response object.
+     * @returns Promise<>
+     */
     public async  findById(req: Request, res: Response) {
         try{
             const user: UserDocument | null = await  userService.findById(req.params.id);
@@ -42,6 +61,12 @@ class UserController {
         }
     }
 
+    /**
+     * Updates an existing user.
+     * @param req - Express request object.
+     * @param res - Express response object.
+     * @returns Promise<>
+     */
     public async update(req: Request, res: Response) {
         try {
             const user: UserDocument | null = await  userService.findById(req.params.id);
@@ -60,6 +85,12 @@ class UserController {
         }
     }
 
+    /**
+     * Deletes an existing user.
+     * @param req - Express request object.
+     * @param res - Express response object.
+     * @returns Promise<>
+     */
     public async delete(req: Request, res: Response) {
         try {
             const user: UserDocument | null = await  userService.findById(req.params.id);
@@ -76,6 +107,12 @@ class UserController {
         }
     }
 
+    /**
+     * Handles user login.
+     * @param req - Express request object.
+     * @param res - Express response object.
+     * @returns Promise<void>
+     */
     public async login(req: Request, res: Response) {
         try {
             const user: UserDocument | null = await userService.findByEmail(req.body.email);
@@ -97,7 +134,12 @@ class UserController {
         }
     }
 
-
+    /**
+     * Retrieves information about groups associated with a user.
+     * @param req - Express request object.
+     * @param res - Express response object.
+     * @returns Promise<>
+     */
     public async getGroupsInfo(req: Request, res: Response){
         try{
             const user: UserDocument | null = await userService.findById(req.params.id);

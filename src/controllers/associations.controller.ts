@@ -7,6 +7,13 @@ import associationsService from "../services/associations.service";
 
 
 class AssociationsController {
+
+    /**
+     * Adds a user to a group.
+     * @param req - Express request object.
+     * @param res - Express response object.
+     * @returns Promise<Response<>>
+     */
     public async addUser(req: Request, res: Response) {
         try {
             const group: GroupDocument | null = await groupService.findById(req.params.groupID);
@@ -26,6 +33,12 @@ class AssociationsController {
         }
     }
 
+    /**
+     * Removes a user from a group.
+     * @param req - Express request object.
+     * @param res - Express response object.
+     * @returns Promise<Response<>>
+     */
     public async removeUser(req: Request, res: Response) {
         try {
             const group: GroupDocument | null = await groupService.findById(req.params.groupID);

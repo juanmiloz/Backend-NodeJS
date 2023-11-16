@@ -6,14 +6,14 @@ import associationsController from "../controllers/associations.controller";
 import validateSchema from "../middleware/validateSchema";
 import {userSchema} from "../schemas/user.schema";
 import {groupSchema} from "../schemas/group.schema";
-import auth from "../middleware/auth";
+import {auth, authRol} from "../middleware/auth";
 
 const routes = (app: Express) => {
   //Login
-  app.post("/login", userController.login);
+  app.post("/login",userController.login);
   
   //Users
-  app.post("/users", validateSchema(userSchema),userController.create);
+  app.post("/users",authRol,validateSchema(userSchema),userController.create);
   app.get("/users", auth,userController.findAll);
   app.get("/users/:id", auth,userController.findById);
   app.put("/users/:id", auth,validateSchema(userSchema),userController.update);

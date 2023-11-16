@@ -16,8 +16,10 @@ app.get("/", (req: Request, res: Response) => {
   res.status(200).send("Hola Mundo");
 });
 
+// Configure routes
 routes(app);
 
+// Connect to the database and start the server
 db.then(() => {
   app.listen(port, () => {
     console.log(`[server] App listening at http://localhost:${port}`);

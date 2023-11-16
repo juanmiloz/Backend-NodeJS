@@ -3,6 +3,14 @@ import GroupModel, {GroupDocument} from "../models/group.model";
 
 class AssociationsService {
 
+
+    /**
+     * Add a user to a group.
+     * @param user - User document to be added to the group.
+     * @param group - Group document to which the user will be added.
+     * @returns A success message if the user is added, or an error message if the user is already in the group.
+     * @throws Throws an error if there is an issue with the database operation.
+     */
     public async addUser(user: UserDocument, group: GroupDocument) {
         try {
             const userFound = await UserModel.findOne({ _id: user.id, groups: group.id });
@@ -17,11 +25,18 @@ class AssociationsService {
                 return "User successfully added to the group"
             }
         } catch (error) {
-            console.log('error')
             throw error
         }
     }
 
+
+    /**
+     * Remove a user from a group.
+     * @param user - User document to be removed from the group.
+     * @param group - Group document from which the user will be removed.
+     * @returns A success message if the user is removed, or an error message if the user is not in the group.
+     * @throws Throws an error if there is an issue with the database operation.
+     */
     public async removeUser(user: UserDocument, group: GroupDocument) {
         try {
             const userFound = await UserModel.findOne({ _id: user.id, groups: group.id });
